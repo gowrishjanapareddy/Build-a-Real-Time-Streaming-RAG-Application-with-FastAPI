@@ -1,0 +1,8 @@
+setup:
+  - command: "docker-compose build"
+start:
+  - command: "docker-compose up -d"
+test:
+  - command: "docker-compose exec app pytest"
+health_check:
+  - command: "curl -f http://localhost:8000/health"

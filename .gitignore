@@ -1,0 +1,46 @@
+# ── Environment Secrets ──────────────────────────────────────────────────────
+.env
+backend/.env
+
+# ── Local Databases & Vector Stores ──────────────────────────────────────────
+chroma_db/
+backend/chroma_db/
+
+# ── Uploaded / Data Files (may contain personal documents) ───────────────────
+data/
+backend/data/
+
+# ── Python ───────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+env/
+
+# ── Chainlit cache ───────────────────────────────────────────────────────────
+backend/.chainlit/
+backend/.files/
+.chainlit/
+.files/
+
+# ── Node / Frontend ──────────────────────────────────────────────────────────
+node_modules/
+frontend/node_modules/
+
+# ── OS / Editor ──────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# ── Logs ─────────────────────────────────────────────────────────────────────
+*.log
+logs/

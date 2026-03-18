@@ -1,0 +1,35 @@
+# ── Web Framework ─────────────────────────────────────────────────────────────
+fastapi
+uvicorn[standard]
+python-multipart
+
+# ── Chat UI ───────────────────────────────────────────────────────────────────
+chainlit
+
+# ── Queue / Cache ─────────────────────────────────────────────────────────────
+redis[asyncio]
+
+# ── LangChain Core + Integrations ────────────────────────────────────────────
+langchain
+langchain-core
+langchain-community
+langchain-text-splitters
+langchain-ollama
+langchain-chroma
+
+# ── Vector Store Backend ──────────────────────────────────────────────────────
+chromadb
+
+# ── Document Loaders ──────────────────────────────────────────────────────────
+pypdf
+unstructured
+python-pptx
+python-docx
+openpyxl
+
+# ── Image / Misc ──────────────────────────────────────────────────────────────
+pillow
+httpx
+
+# ── Environment ───────────────────────────────────────────────────────────────
+python-dotenv

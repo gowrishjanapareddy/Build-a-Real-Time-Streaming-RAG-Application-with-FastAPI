@@ -1,0 +1,56 @@
+services:
+  # 1. Redis: The message broker between FastAPI and the Worker
+  redis:
+    image: redis:alpine
+    container_name: rag-redis
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+  # 2. FastAPI App: Handles the UI (Chainlit) and the /ingest API
+  app:
+    build: 
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: rag-app
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app
+      - ./chroma_db:/app/chroma_db
+      - ./data:/app/data
+    env_file:
+      - .env
+    # This allows the container to talk to Ollama on your Windows/Mac/Linux host
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    depends_on:
+      redis:
+        condition: service_healthy
+
+  # 3. Worker: Picks up files from Redis and puts them into ChromaDB
+  worker:
+    build: 
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: rag-worker
+    command: python app/worker.py
+    volumes:
+      - ./backend:/app
+      - ./chroma_db:/app/chroma_db
+      - ./data:/app/data
+    env_file:
+      - .env
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    depends_on:
+      redis:
+        condition: service_healthy
+
+volumes:
+  chroma_db:
+  data:
