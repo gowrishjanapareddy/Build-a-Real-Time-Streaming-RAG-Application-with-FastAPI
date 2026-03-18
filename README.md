@@ -1,4 +1,4 @@
-# 🚀 Real-Time Streaming RAG Application with FastAPI
+# Real-Time Streaming RAG Application with FastAPI
 
 A production-ready, fully containerized **Retrieval-Augmented Generation (RAG)** application that delivers **token-by-token streaming responses** powered entirely by local LLMs via Ollama — no API keys, no cloud costs, complete data privacy.
 
@@ -6,22 +6,22 @@ A production-ready, fully containerized **Retrieval-Augmented Generation (RAG)**
 
 ---
 
-## ✨ Features
+## Features
 
 | Feature | Details |
 |---------|---------|
-| 🔴 **Real-Time Streaming** | Responses stream token-by-token using FastAPI async generators |
-| ⚡ **Async Ingestion Pipeline** | Documents processed by a dedicated Redis-backed background worker |
-| 🦙 **Local LLM Inference** | Powered by Ollama (Gemma 3:4b + nomic-embed-text) |
-| 📄 **Multi-Format Support** | PDF, DOCX, PPTX, TXT |
-| 🗄️ **Persistent Vector Store** | ChromaDB with disk persistence across restarts |
-| 🐳 **Fully Containerized** | One-command startup with Docker Compose |
-| 💬 **Chat UI** | Chainlit-powered interface integrated with FastAPI |
-| 🔁 **Source Citations** | Retrieval metadata surfaced during streaming |
+| **Real-Time Streaming** | Responses stream token-by-token using FastAPI async generators |
+| **Async Ingestion Pipeline** | Documents processed by a dedicated Redis-backed background worker |
+| **Local LLM Inference** | Powered by Ollama (Gemma 3:4b + nomic-embed-text) |
+| **Multi-Format Support** | PDF, DOCX, PPTX, TXT |
+| **Persistent Vector Store** | ChromaDB with disk persistence across restarts |
+| **Fully Containerized** | One-command startup with Docker Compose |
+| **Chat UI** | Chainlit-powered interface integrated with FastAPI |
+| **Source Citations** | Retrieval metadata surfaced during streaming |
 
 ---
 
-## 🏗️ Technical Stack
+## Technical Stack
 
 | Layer | Technology |
 |-------|-----------|
@@ -35,7 +35,7 @@ A production-ready, fully containerized **Retrieval-Augmented Generation (RAG)**
 
 ---
 
-## 📋 Prerequisites
+## Prerequisites
 
 - **Docker Desktop** (with Docker Compose) — [Install](https://docs.docker.com/get-docker/)
 - **Ollama** installed on your host — [Install](https://ollama.com/)
@@ -44,7 +44,7 @@ A production-ready, fully containerized **Retrieval-Augmented Generation (RAG)**
 
 ---
 
-## ⚙️ Setup & Installation
+## Setup & Installation
 
 ### Step 1 — Pull Ollama Models (Host Machine)
 
@@ -90,7 +90,7 @@ This starts three services: **redis**, **app** (FastAPI + Chainlit), **worker** 
 
 ---
 
-## 🖥️ Running the Application
+## Running the Application
 
 | Endpoint | URL |
 |----------|-----|
@@ -115,7 +115,7 @@ curl -X POST http://localhost:8000/ingest \
 
 ---
 
-## 🧪 Running Tests
+## Running Tests
 
 ### Local tests (requires Python venv)
 
@@ -132,7 +132,7 @@ docker-compose exec app pytest /tests/ -v
 
 ---
 
-## 🛑 Stopping the Application
+## Stopping the Application
 
 ```bash
 docker-compose down          # stop containers
@@ -141,7 +141,7 @@ docker-compose down -v       # stop + remove volumes (clears ChromaDB)
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 .
@@ -167,7 +167,7 @@ docker-compose down -v       # stop + remove volumes (clears ChromaDB)
 
 ---
 
-## 🔮 How It Works
+## How It Works
 
 1. **Upload**: User uploads a document via Chainlit UI or `/ingest` REST API
 2. **Queue**: FastAPI saves the file to a shared Docker volume and pushes a task to Redis
@@ -177,16 +177,12 @@ docker-compose down -v       # stop + remove volumes (clears ChromaDB)
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 1. Fork the repo
 2. Create a feature branch: `git checkout -b feature/my-feature`
 3. Commit changes: `git commit -m 'Add my feature'`
 4. Push: `git push origin feature/my-feature`
 5. Open a Pull Request
-
----
-
-## 📜 License
 
 MIT License — see [LICENSE](LICENSE) for details.
