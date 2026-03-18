@@ -1,8 +1,27 @@
 setup:
+  - command: "ollama pull gemma3:4b"
+    description: "Pull the LLM model (gemma3:4b) via Ollama on the host machine"
+  - command: "ollama pull nomic-embed-text"
+    description: "Pull the embedding model (nomic-embed-text) via Ollama on the host machine"
+  - command: "cp .env.example .env"
+    description: "Copy environment template (adjust values if needed)"
   - command: "docker-compose build"
+    description: "Build all Docker images (backend app + worker)"
+
 start:
   - command: "docker-compose up -d"
-test:
-  - command: "docker-compose exec app pytest"
+    description: "Start all services in detached mode (redis, app, worker)"
+
 health_check:
   - command: "curl -f http://localhost:8000/health"
+    description: "Verify the FastAPI backend is healthy and responding"
+  - command: "docker-compose ps"
+    description: "Check all containers are running (rag-redis, rag-app, rag-worker)"
+
+test:
+  - command: "docker-compose exec app python -m pytest /tests/ -v"
+    description: "Run integration tests inside the running app container"
+
+stop:
+  - command: "docker-compose down"
+    description: "Stop all running containers"
