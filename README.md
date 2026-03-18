@@ -184,5 +184,3 @@ docker-compose down -v       # stop + remove volumes (clears ChromaDB)
 3. Commit changes: `git commit -m 'Add my feature'`
 4. Push: `git push origin feature/my-feature`
 5. Open a Pull Request
-
-MIT License — see [LICENSE](LICENSE) for details.
